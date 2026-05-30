@@ -512,7 +512,7 @@ void CKeybindManager::onSwitchOffEvent(const std::string& switchName) {
     handleKeybinds(0, SPressedKeyWithMods{.keyName = "switch:off:" + switchName}, true, nullptr, nullptr);
 }
 
-eMultiKeyCase CKeybindManager::mkKeysymSetMatches(const std::vector<KeybindKey>& keybindKeysyms, const std::set<KeybindKey>& pressedKeysyms) {
+eMultiKeyCase CKeybindManager::mkKeysymSetMatches(std::span<const KeybindKey> keybindKeysyms, const std::set<KeybindKey>& pressedKeysyms) {
     // Returns whether the bound and pressed keys match fully, partially, or not at all.
     // KeybindKey stores {keysym, keycode}; either non-zero field matching is enough.
 

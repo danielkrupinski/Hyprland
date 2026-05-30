@@ -43,7 +43,7 @@ void CConfigWatcher::update() {
     setWatchList(*PDISABLEAUTORELOAD ? std::vector<std::string>{} : Config::mgr()->getConfigPaths());
 }
 
-void CConfigWatcher::setWatchList(const std::vector<std::string>& paths) {
+void CConfigWatcher::setWatchList(std::span<const std::string> paths) {
 
     // we clear all watches first, because whichever fired is now invalid
     // or that is at least what it seems to be.

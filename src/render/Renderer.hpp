@@ -7,6 +7,7 @@
 #include <hyprutils/utils/ScopeGuard.hpp>
 #include <list>
 #include <optional>
+#include <span>
 #include "OpenGL.hpp"
 #include "./SyncFDManager.hpp"
 #include "./pass/Pass.hpp"
@@ -246,7 +247,7 @@ namespace Render {
         void                               handleFullscreenSettings(PHLMONITOR pMonitor);
 
         // old private:
-        void arrangeLayerArray(PHLMONITOR, const std::vector<PHLLSREF>&, bool, CBox*);
+        void arrangeLayerArray(PHLMONITOR, std::span<const PHLLSREF>, bool, CBox*);
         void renderWorkspace(PHLMONITOR pMonitor, PHLWORKSPACE pWorkspace, const Time::steady_tp& now, const CBox& geometry);
         void renderWorkspaceWindowsFullscreen(PHLMONITOR, PHLWORKSPACE, const Time::steady_tp&); // renders workspace windows (fullscreen) (tiled, floating, pinned, but no special)
         void renderWorkspaceWindows(PHLMONITOR, PHLWORKSPACE, const Time::steady_tp&); // renders workspace windows (no fullscreen) (tiled, floating, pinned, but no special)

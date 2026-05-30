@@ -3,6 +3,7 @@
 #include "../defines.hpp"
 #include <vector>
 #include <set>
+#include <span>
 #include <unordered_set>
 #include <unordered_map>
 #include <functional>
@@ -162,7 +163,7 @@ class CKeybindManager {
     std::set<KeybindKey>             m_mkKeys = {};
     std::set<KeybindKey>             m_mkMods = {};
     eMultiKeyCase                    mkBindMatches(const SP<SKeybind>);
-    eMultiKeyCase                    mkKeysymSetMatches(const std::vector<KeybindKey>&, const std::set<KeybindKey>&);
+    eMultiKeyCase                    mkKeysymSetMatches(std::span<const KeybindKey>, const std::set<KeybindKey>&);
 
     bool                             handleInternalKeybinds(xkb_keysym_t);
     bool                             handleVT(xkb_keysym_t);

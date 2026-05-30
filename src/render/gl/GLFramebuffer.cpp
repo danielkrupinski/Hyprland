@@ -171,7 +171,7 @@ GLuint CGLFramebuffer::getFBID() {
     return m_fbAllocated ? m_fb : 0;
 }
 
-void CGLFramebuffer::invalidate(const std::vector<GLenum>& attachments) {
+void CGLFramebuffer::invalidate(std::span<const GLenum> attachments) {
     if (!isAllocated())
         return;
 

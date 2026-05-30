@@ -4,6 +4,7 @@
 #include "../Texture.hpp"
 #include "../Framebuffer.hpp"
 #include <drm_fourcc.h>
+#include <span>
 
 namespace Render::GL {
     class CGLFramebuffer : public IFramebuffer {
@@ -19,7 +20,7 @@ namespace Render::GL {
         void   bind() override;
         void   unbind();
         GLuint getFBID();
-        void   invalidate(const std::vector<GLenum>& attachments);
+        void   invalidate(std::span<const GLenum> attachments);
 
         // clear at most once per invalidate()
         void clearAfterInvalidation();

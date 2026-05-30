@@ -14,7 +14,7 @@
 
 using namespace Render;
 
-CShaderLoader::CShaderLoader(const std::vector<std::string> includes, const std::array<std::string, SH_FRAG_LAST>& frags, const std::string shaderPath) : m_shaderPath(shaderPath) {
+CShaderLoader::CShaderLoader(std::span<const std::string> includes, const std::array<std::string, SH_FRAG_LAST>& frags, const std::string shaderPath) : m_shaderPath(shaderPath) {
     m_callbacks = glsl_include_callbacks_t{
         .include_local =
             [](void* ctx, const char* header_name, const char* includer_name, size_t include_depth) {

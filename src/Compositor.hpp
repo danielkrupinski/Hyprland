@@ -3,6 +3,7 @@
 #include <sys/resource.h>
 
 #include <ranges>
+#include <span>
 
 #include "helpers/math/Direction.hpp"
 #include "managers/XWaylandManager.hpp"
@@ -163,7 +164,7 @@ class CCompositor {
     void                                setPreferredTransformForSurface(SP<CWLSurfaceResource> pSurface, wl_output_transform transform);
     void                                updateSuspendedStates();
     void                                onNewMonitor(SP<Aquamarine::IOutput> output);
-    void                                ensurePersistentWorkspacesPresent(const std::vector<Config::CWorkspaceRule>& rules, PHLWORKSPACE pWorkspace = nullptr);
+    void                                ensurePersistentWorkspacesPresent(std::span<const Config::CWorkspaceRule> rules, PHLWORKSPACE pWorkspace = nullptr);
     void                                ensurePersistentWorkspacesPresent(PHLWORKSPACE pWorkspace = nullptr);
     void                                ensureWorkspacesOnAssignedMonitors();
     std::optional<unsigned int>         getVTNr();

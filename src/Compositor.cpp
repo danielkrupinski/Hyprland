@@ -3125,7 +3125,7 @@ void CCompositor::ensurePersistentWorkspacesPresent(PHLWORKSPACE pWorkspace) {
     ensurePersistentWorkspacesPresent(Config::workspaceRuleMgr()->getAllWorkspaceRules());
 }
 
-void CCompositor::ensurePersistentWorkspacesPresent(const std::vector<Config::CWorkspaceRule>& rules, PHLWORKSPACE pWorkspace) {
+void CCompositor::ensurePersistentWorkspacesPresent(std::span<const Config::CWorkspaceRule> rules, PHLWORKSPACE pWorkspace) {
     if (!Desktop::focusState()->monitor())
         return;
 

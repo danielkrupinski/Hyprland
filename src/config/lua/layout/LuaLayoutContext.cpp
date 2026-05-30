@@ -151,7 +151,7 @@ static int ctxSplit(lua_State* L) {
     return 1;
 }
 
-void Config::Lua::Layouts::pushLayoutContext(lua_State* L, const std::vector<SP<Layout::ITarget>>& targets, const CBox& area) {
+void Config::Lua::Layouts::pushLayoutContext(lua_State* L, std::span<const SP<Layout::ITarget>> targets, const CBox& area) {
     lua_newtable(L);
 
     pushBox(L, area);

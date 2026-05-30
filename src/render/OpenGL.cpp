@@ -1,4 +1,5 @@
 #include <GLES3/gl32.h>
+#include <array>
 #include <cstdint>
 #include <hyprgraphics/color/Color.hpp>
 #include <hyprutils/memory/SharedPtr.hpp>
@@ -842,7 +843,7 @@ void CHyprOpenGLImpl::end() {
         g_pHyprRenderer->m_renderData.pMonitor->resources()->forEachUnusedFB(
             [](const auto& fb) {
                 fb->bind();
-                GLFB(fb)->invalidate({GL_STENCIL_ATTACHMENT, GL_COLOR_ATTACHMENT0});
+                GLFB(fb)->invalidate(std::array<GLenum, 2>{GL_STENCIL_ATTACHMENT, GL_COLOR_ATTACHMENT0});
             },
             false);
     }
@@ -2066,7 +2067,7 @@ void CHyprOpenGLImpl::renderTextureWithBlurInternal(SP<ITexture> tex, const CBox
                               .primarySurfaceUVBottomRight = g_pHyprRenderer->m_renderData.primarySurfaceUVBottomRight,
                           });
 
-    GLFB(g_pHyprRenderer->m_renderData.currentFB)->invalidate({GL_STENCIL_ATTACHMENT});
+    GLFB(g_pHyprRenderer->m_renderData.currentFB)->invalidate(std::array<GLenum, 1>{GL_STENCIL_ATTACHMENT});
     scissor(nullptr);
 }
 

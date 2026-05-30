@@ -177,7 +177,7 @@ std::vector<SP<Layout::ITarget>> CLuaTiledAlgorithm::liveTargets() {
     return result;
 }
 
-bool CLuaTiledAlgorithm::callRecalculate(const std::vector<SP<Layout::ITarget>>& targets) {
+bool CLuaTiledAlgorithm::callRecalculate(std::span<const SP<Layout::ITarget>> targets) {
     if (!m_provider || !m_provider->active || !m_provider->state || !m_provider->manager)
         return false;
 
@@ -212,7 +212,7 @@ bool CLuaTiledAlgorithm::callRecalculate(const std::vector<SP<Layout::ITarget>>&
     return true;
 }
 
-void CLuaTiledAlgorithm::applyDefaultGrid(const std::vector<SP<Layout::ITarget>>& targets) {
+void CLuaTiledAlgorithm::applyDefaultGrid(std::span<const SP<Layout::ITarget>> targets) {
     auto parent = m_parent.lock();
     auto space  = parent ? parent->space() : nullptr;
     if (!space || targets.empty())

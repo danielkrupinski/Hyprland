@@ -1,6 +1,7 @@
 #pragma once
 #include "../../../helpers/memory/Memory.hpp"
 #include <vector>
+#include <span>
 #include <string>
 #include <functional>
 #include <hyprutils/os/FileDescriptor.hpp>
@@ -18,7 +19,7 @@ namespace Config {
         void                            update();
 
         Hyprutils::OS::CFileDescriptor& getInotifyFD();
-        void                            setWatchList(const std::vector<std::string>& paths);
+        void                            setWatchList(std::span<const std::string> paths);
         void                            setOnChange(const std::function<void(const SConfigWatchEvent&)>& fn);
         void                            onInotifyEvent();
 

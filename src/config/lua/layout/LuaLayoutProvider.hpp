@@ -5,6 +5,7 @@
 #include "../../../layout/algorithm/TiledAlgorithm.hpp"
 
 #include <optional>
+#include <span>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -51,8 +52,8 @@ namespace Config::Lua::Layouts {
         std::vector<WP<Layout::ITarget>> m_targets;
 
         std::vector<SP<Layout::ITarget>> liveTargets();
-        bool                             callRecalculate(const std::vector<SP<Layout::ITarget>>& targets);
-        void                             applyDefaultGrid(const std::vector<SP<Layout::ITarget>>& targets);
+        bool                             callRecalculate(std::span<const SP<Layout::ITarget>> targets);
+        void                             applyDefaultGrid(std::span<const SP<Layout::ITarget>> targets);
         void                             reportError(const std::string& message);
     };
 

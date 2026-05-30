@@ -2,6 +2,7 @@
 
 #include <array>
 #include <glslang/Include/glslang_c_interface.h>
+#include <span>
 #include <string>
 #include <vector>
 #include <map>
@@ -47,7 +48,7 @@ namespace Render {
 
     class CShaderLoader {
       public:
-        CShaderLoader(const std::vector<std::string> includes, const std::array<std::string, SH_FRAG_LAST>& frags, const std::string shaderPath = "");
+        CShaderLoader(std::span<const std::string> includes, const std::array<std::string, SH_FRAG_LAST>& frags, const std::string shaderPath = "");
         ~CShaderLoader();
 
         void                                      include(const std::string& filename);
