@@ -290,6 +290,7 @@ endif()
 
 add_library(hyprland_lib STATIC ${SRCFILES})
 add_executable(Hyprland src/main.cpp ${TRACY_CPP_FILES})
+set_target_properties(Hyprland PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_link_libraries(Hyprland hyprland_lib)
 
 target_include_directories(hyprland_lib PUBLIC ${deps_INCLUDE_DIRS} ${LUA_INCLUDE_DIRS})
