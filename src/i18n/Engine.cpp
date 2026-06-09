@@ -24,50 +24,59 @@ SP<I18n::CI18nEngine> I18n::i18nEngine() {
     huEngine->registerEntry(locale, key, translationFunc);
 }
 
+static void registerEntries(const char* locale, std::span<const std::pair<eI18nKeys, const char*>> entries) {
+    for (const auto& entry : entries)
+        registerEntry(locale, entry.first, entry.second);
+}
+
 I18n::CI18nEngine::CI18nEngine() {
     huEngine = makeShared<Hyprutils::I18n::CI18nEngine>();
     huEngine->setFallbackLocale("en_US");
     localeStr = huEngine->getSystemLocale().locale();
 
     // be_BY (Belarusian)
-    registerEntry("be_BY", TXT_KEY_ANR_TITLE, "Праграма не адказвае");
-    registerEntry("be_BY", TXT_KEY_ANR_CONTENT, "Праграма {title} - {class} не адказвае.\nШто хочаце з ёй зрабіць?");
-    registerEntry("be_BY", TXT_KEY_ANR_OPTION_TERMINATE, "Прымусова спыніць");
-    registerEntry("be_BY", TXT_KEY_ANR_OPTION_WAIT, "Пачакаць");
-    registerEntry("be_BY", TXT_KEY_ANR_PROP_UNKNOWN, "(невядома)");
+    static constexpr auto be_BY_strings = std::to_array<std::pair<eI18nKeys, const char*>>({
+        { TXT_KEY_ANR_TITLE, "Праграма не адказвае" },
+        { TXT_KEY_ANR_CONTENT, "Праграма {title} - {class} не адказвае.\nШто хочаце з ёй зрабіць?" },
+        { TXT_KEY_ANR_OPTION_TERMINATE, "Прымусова спыніць" },
+        { TXT_KEY_ANR_OPTION_WAIT, "Пачакаць" },
+        { TXT_KEY_ANR_PROP_UNKNOWN, "(невядома)" },
 
-    registerEntry("be_BY", TXT_KEY_PERMISSION_REQUEST_UNKNOWN, "Праграма <b>{app}</b> запытвае невядомы дазвол.");
-    registerEntry("be_BY", TXT_KEY_PERMISSION_REQUEST_SCREENCOPY, "Праграма <b>{app}</b> спрабуе здымаць экран.\n\nЦі хочаце дазволіць?");
-    registerEntry("be_BY", TXT_KEY_PERMISSION_REQUEST_PLUGIN, "Праграма <b>{app}</b> спрабуе загрузіць плагін: <b>{plugin}</b>.\n\nХочаце дазволіць?");
-    registerEntry("be_BY", TXT_KEY_PERMISSION_REQUEST_KEYBOARD, "Выяўленая новая клавіятура: <b>{keyboard}</b>.\n\nХочаце дазволіць яе выкарыстанне?");
-    registerEntry("be_BY", TXT_KEY_PERMISSION_UNKNOWN_NAME, "(невядома)");
-    registerEntry("be_BY", TXT_KEY_PERMISSION_TITLE, "Запыт дазволу");
-    registerEntry("be_BY", TXT_KEY_PERMISSION_PERSISTENCE_HINT, "Падказка: вы можаце задаць пастаянныя правілы для гэтага ў файле канфігурацыі Hyprland.");
-    registerEntry("be_BY", TXT_KEY_PERMISSION_ALLOW, "Дазволіць");
-    registerEntry("be_BY", TXT_KEY_PERMISSION_ALLOW_AND_REMEMBER, "Дазволіць і запомніць");
-    registerEntry("be_BY", TXT_KEY_PERMISSION_ALLOW_ONCE, "Дазволіць аднойчы");
-    registerEntry("be_BY", TXT_KEY_PERMISSION_DENY, "Забараніць");
-    registerEntry("be_BY", TXT_KEY_PERMISSION_UNKNOWN_WAYLAND_APP, "Невядомая праграма (Ідэнтыфікатар кліента wayland {wayland_id})");
+        { TXT_KEY_PERMISSION_REQUEST_UNKNOWN, "Праграма <b>{app}</b> запытвае невядомы дазвол." },
+        { TXT_KEY_PERMISSION_REQUEST_SCREENCOPY, "Праграма <b>{app}</b> спрабуе здымаць экран.\n\nЦі хочаце дазволіць?" },
+        { TXT_KEY_PERMISSION_REQUEST_PLUGIN, "Праграма <b>{app}</b> спрабуе загрузіць плагін: <b>{plugin}</b>.\n\nХочаце дазволіць?" },
+        { TXT_KEY_PERMISSION_REQUEST_KEYBOARD, "Выяўленая новая клавіятура: <b>{keyboard}</b>.\n\nХочаце дазволіць яе выкарыстанне?" },
+        { TXT_KEY_PERMISSION_UNKNOWN_NAME, "(невядома)" },
+        { TXT_KEY_PERMISSION_TITLE, "Запыт дазволу" },
+        { TXT_KEY_PERMISSION_PERSISTENCE_HINT, "Падказка: вы можаце задаць пастаянныя правілы для гэтага ў файле канфігурацыі Hyprland." },
+        { TXT_KEY_PERMISSION_ALLOW, "Дазволіць" },
+        { TXT_KEY_PERMISSION_ALLOW_AND_REMEMBER, "Дазволіць і запомніць" },
+        { TXT_KEY_PERMISSION_ALLOW_ONCE, "Дазволіць аднойчы" },
+        { TXT_KEY_PERMISSION_DENY, "Забараніць" },
+        { TXT_KEY_PERMISSION_UNKNOWN_WAYLAND_APP, "Невядомая праграма (Ідэнтыфікатар кліента wayland {wayland_id})" },
 
-    registerEntry("be_BY", TXT_KEY_NOTIF_EXTERNAL_XDG_DESKTOP,
-                  "Выглядае, што вашая пераменная асяроддзя XDG_CURRENT_DESKTOP зададзеная звонку, цяперашняе значэнне: {value}.\nГэта можа выклікаць праблемы, калі "
-                  "гэта не зроблена наўмысна.");
-    registerEntry("be_BY", TXT_KEY_NOTIF_NO_GUIUTILS,
-                  "У вашай сістэме не ўсталяваны hyprland-guiutils, што выкарыстоўваецца для некаторых дыялогавых вокнаў. Разгледзьце ўсталёўку пакета.");
+        { TXT_KEY_NOTIF_EXTERNAL_XDG_DESKTOP,
+                        "Выглядае, што вашая пераменная асяроддзя XDG_CURRENT_DESKTOP зададзеная звонку, цяперашняе значэнне: {value}.\nГэта можа выклікаць праблемы, калі "
+                        "гэта не зроблена наўмысна." },
+        { TXT_KEY_NOTIF_NO_GUIUTILS,
+                        "У вашай сістэме не ўсталяваны hyprland-guiutils, што выкарыстоўваецца для некаторых дыялогавых вокнаў. Разгледзьце ўсталёўку пакета." },
+        { TXT_KEY_NOTIF_INVALID_MONITOR_LAYOUT,
+                        "Макет манітораў наладжаны некарэктна. Манітор {name} накладаецца на іншы(я) манітор(ы).\nДля падрабязнасцей звярніцеся да Wiki (Старонка Monitors). "
+                        "Гэта <b>абавязкова</b> створыць праблемы." },
+        { TXT_KEY_NOTIF_MONITOR_MODE_FAIL, "Манітор {name} не змог наладзіць ніводны з запатрабаваных рэжымаў, аварыйна ўжыты рэжым {mode}." },
+        { TXT_KEY_NOTIF_MONITOR_AUTO_SCALE, "Няверна зададзены маштаб для манітора {name}: {scale}, ужываецца прапанаваны маштаб: {fixed_scale}" },
+        { TXT_KEY_NOTIF_FAILED_TO_LOAD_PLUGIN, "Не атрымалася загрузіць плагін {name}: {error}" },
+        { TXT_KEY_NOTIF_CM_RELOAD_FAILED, "Не атрымалася перазагрузіць шэйдар CM, аварыйна ўжываецца rgba/rgbx." },
+        { TXT_KEY_NOTIF_WIDE_COLOR_NOT_10B, "Манітор {name}: пашыраны каляровы дыяпазон уключаны, але экран не ў рэжыме 10-біт." },
+    });
+
+    registerEntries("be_BY", be_BY_strings);
     registerEntry("be_BY", TXT_KEY_NOTIF_FAILED_ASSETS, [](const Hyprutils::I18n::translationVarMap& vars) {
         int assetsNo = std::stoi(vars.at("count"));
         if (assetsNo <= 1)
             return "Hyprland не змог загрузіць {count} важны рэсурс, вінавацьце ў гэтым адказнага за зборку пакетаў для свайго дыстрыбутыва!";
         return "Hyprland не змог загрузіць {count} важных рэсурсаў, вінавацьце ў гэтым адказнага за зборку пакетаў для свайго дыстрыбутыва!";
     });
-    registerEntry("be_BY", TXT_KEY_NOTIF_INVALID_MONITOR_LAYOUT,
-                  "Макет манітораў наладжаны некарэктна. Манітор {name} накладаецца на іншы(я) манітор(ы).\nДля падрабязнасцей звярніцеся да Wiki (Старонка Monitors). "
-                  "Гэта <b>абавязкова</b> створыць праблемы.");
-    registerEntry("be_BY", TXT_KEY_NOTIF_MONITOR_MODE_FAIL, "Манітор {name} не змог наладзіць ніводны з запатрабаваных рэжымаў, аварыйна ўжыты рэжым {mode}.");
-    registerEntry("be_BY", TXT_KEY_NOTIF_MONITOR_AUTO_SCALE, "Няверна зададзены маштаб для манітора {name}: {scale}, ужываецца прапанаваны маштаб: {fixed_scale}");
-    registerEntry("be_BY", TXT_KEY_NOTIF_FAILED_TO_LOAD_PLUGIN, "Не атрымалася загрузіць плагін {name}: {error}");
-    registerEntry("be_BY", TXT_KEY_NOTIF_CM_RELOAD_FAILED, "Не атрымалася перазагрузіць шэйдар CM, аварыйна ўжываецца rgba/rgbx.");
-    registerEntry("be_BY", TXT_KEY_NOTIF_WIDE_COLOR_NOT_10B, "Манітор {name}: пашыраны каляровы дыяпазон уключаны, але экран не ў рэжыме 10-біт.");
 
     // bn_BD (Bengali)
     registerEntry("bn_BD", TXT_KEY_ANR_TITLE, "অ্যাপ্লিকেশন সাড়া দিচ্ছে না");
