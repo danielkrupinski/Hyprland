@@ -108,7 +108,7 @@ namespace Config::Values {
     using valueOptions_t = typename SValueOptions<T>::type;
 
     template <typename T, typename Def>
-    SP<T> makeConfigValue(const char* name, const char* description, Def&& def, valueOptions_t<T> options) {
+    [[gnu::noinline]] SP<T> makeConfigValue(const char* name, const char* description, Def&& def, valueOptions_t<T> options) {
         return makeShared<T>(name, description, std::forward<Def>(def), std::move(options));
     }
 
