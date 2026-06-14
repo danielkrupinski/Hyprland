@@ -46,10 +46,10 @@ namespace Log {
     inline UP<CLogger> logger = makeUnique<CLogger>();
 
     //
-    inline constexpr const Hyprutils::CLI::eLogLevel DEBUG = Hyprutils::CLI::LOG_DEBUG;
-    inline constexpr const Hyprutils::CLI::eLogLevel WARN  = Hyprutils::CLI::LOG_WARN;
-    inline constexpr const Hyprutils::CLI::eLogLevel ERR   = Hyprutils::CLI::LOG_ERR;
-    inline constexpr const Hyprutils::CLI::eLogLevel CRIT  = Hyprutils::CLI::LOG_CRIT;
-    inline constexpr const Hyprutils::CLI::eLogLevel INFO  = Hyprutils::CLI::LOG_DEBUG;
-    inline constexpr const Hyprutils::CLI::eLogLevel TRACE = Hyprutils::CLI::LOG_TRACE;
+    inline constexpr Hyprutils::CLI::eLogLevel DEBUG = Hyprutils::CLI::LOG_DEBUG;
+    inline constexpr Hyprutils::CLI::eLogLevel WARN  = Hyprutils::CLI::LOG_WARN;
+    inline constexpr Hyprutils::CLI::eLogLevel ERR   = Hyprutils::CLI::LOG_ERR;
+    inline constexpr Hyprutils::CLI::eLogLevel CRIT  = Hyprutils::CLI::LOG_CRIT;
+    inline constexpr Hyprutils::CLI::eLogLevel INFO  = Hyprutils::CLI::LOG_DEBUG;
+    inline constexpr Hyprutils::CLI::eLogLevel TRACE = Hyprutils::CLI::LOG_TRACE;
 };

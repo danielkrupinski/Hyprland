@@ -3461,7 +3461,7 @@ SP<ITexture> IHyprRenderer::renderSplash(const std::function<SP<ITexture>(const 
 
 using ColorConversionKey = std::tuple<float, float, float, float, uint64_t>;
 static std::map<ColorConversionKey, CHyprColor> colorConversionCache;
-constexpr const size_t                          MAX_COLOR_CONVERSION_CACHE_SIZE = 4096;
+constexpr size_t                          MAX_COLOR_CONVERSION_CACHE_SIZE = 4096;
 
 //
 CHyprColor IHyprRenderer::getConvertedColor(const CHyprColor& color) {

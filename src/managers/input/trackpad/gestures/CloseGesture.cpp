@@ -11,7 +11,7 @@
 
 using namespace Desktop::View;
 
-constexpr const float                   MAX_DISTANCE = 200.F;
+constexpr float                         MAX_DISTANCE = 200.F;
 
 static std::vector<SP<CEventLoopTimer>> trackpadCloseTimers;
 

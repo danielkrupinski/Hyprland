@@ -6,7 +6,7 @@
 #include "../../../../layout/LayoutManager.hpp"
 #include "../../../../layout/target/WindowTarget.hpp"
 
-constexpr const float MAX_DISTANCE = 250.F;
+constexpr float MAX_DISTANCE = 250.F;
 
 //
 static Vector2D lerpVal(const Vector2D& from, const Vector2D& to, const float& t) {

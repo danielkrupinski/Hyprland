@@ -2817,7 +2817,7 @@ std::optional<Vector2D> CWindow::maxSize() {
     if (((m_isX11 && !m_xwaylandSurface->m_sizeHints) || (!m_isX11 && (!m_xdgSurface || !m_xdgSurface->m_toplevel)) || m_ruleApplicator->noMaxSize().valueOrDefault()))
         return std::nullopt;
 
-    constexpr const double NO_MAX_SIZE_LIMIT = std::numeric_limits<double>::max();
+    constexpr double NO_MAX_SIZE_LIMIT = std::numeric_limits<double>::max();
 
     Vector2D maxSize = m_isX11 ? Vector2D(m_xwaylandSurface->m_sizeHints->max_width, m_xwaylandSurface->m_sizeHints->max_height) : m_xdgSurface->m_toplevel->layoutMaxSize();
 

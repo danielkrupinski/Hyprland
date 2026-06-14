@@ -12,7 +12,7 @@
 using namespace Layout;
 using namespace Layout::Floating;
 
-constexpr const Vector2D DEFAULT_SIZE = {640, 400};
+constexpr Vector2D DEFAULT_SIZE = {640, 400};
 
 //
 void CDefaultFloatingAlgorithm::newTarget(SP<ITarget> target) {

@@ -10,7 +10,7 @@
 
 using namespace State;
 
-static constexpr const long long READY_TIMEOUT_TO_UNSAFE_MS = 2000;
+static constexpr long long READY_TIMEOUT_TO_UNSAFE_MS = 2000;
 
 UP<CFallbackStateKeeper>&        State::fallbackState() {
     static UP<CFallbackStateKeeper> p = makeUnique<CFallbackStateKeeper>();

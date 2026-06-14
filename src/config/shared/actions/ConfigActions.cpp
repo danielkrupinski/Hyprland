@@ -1652,7 +1652,7 @@ ActionResult Actions::cycleNext(const bool next, std::optional<bool> onlyTiled, 
     // If requesting tiled-only and we're on a tiled window, try layout message for supported layouts
     if (onlyTiled.value_or(false) && !window->m_isFloating) {
         if (const auto SPACE = window->layoutTarget()->space(); SPACE) {
-            constexpr const std::array<const std::type_info*, 2> LAYOUTS_WITH_CYCLE_NEXT = {
+            constexpr std::array<const std::type_info*, 2> LAYOUTS_WITH_CYCLE_NEXT = {
                 &typeid(Layout::Tiled::CMonocleAlgorithm),
                 &typeid(Layout::Tiled::CMasterAlgorithm),
             };

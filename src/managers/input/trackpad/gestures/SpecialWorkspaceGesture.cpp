@@ -8,7 +8,7 @@
 #include <hyprutils/memory/Casts.hpp>
 using namespace Hyprutils::Memory;
 
-constexpr const float MAX_DISTANCE = 150.F;
+constexpr float MAX_DISTANCE = 150.F;
 
 //
 static Vector2D lerpVal(const Vector2D& from, const Vector2D& to, const float& t) {

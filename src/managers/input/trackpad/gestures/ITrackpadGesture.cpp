@@ -1,8 +1,8 @@
 #include "ITrackpadGesture.hpp"
 
 // scale the pinch "scale" to match our imaginary delta units
-constexpr const float PINCH_DELTA_SCALE         = 400.F;
-constexpr const float PINCH_DELTA_SCALE_OUT_ADD = 1.6F;
+constexpr float PINCH_DELTA_SCALE         = 400.F;
+constexpr float PINCH_DELTA_SCALE_OUT_ADD = 1.6F;
 
 //
 void ITrackpadGesture::begin(const STrackpadGestureBegin& e) {

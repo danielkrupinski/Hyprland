@@ -10,7 +10,7 @@
 namespace ErrorOverlay {
 
     namespace Colors {
-        constexpr const float                   ANGLE_30 = 0.52359877;
+        constexpr float                   ANGLE_30 = 0.52359877;
 
         static const Config::CGradientValueData ERROR   = Config::CGradientValueData{std::vector<CHyprColor>{0xffff6666, 0xff800000}, ANGLE_30};
         static const Config::CGradientValueData WARNING = Config::CGradientValueData{std::vector<CHyprColor>{0xffffdb4d, 0xff665200}, ANGLE_30};

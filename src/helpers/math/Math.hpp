@@ -10,7 +10,7 @@
 using namespace Hyprutils::Math;
 
 namespace Math {
-    constexpr const Vector2D VECTOR2D_MAX = {std::numeric_limits<double>::max(), std::numeric_limits<double>::max()};
+    constexpr Vector2D VECTOR2D_MAX = {std::numeric_limits<double>::max(), std::numeric_limits<double>::max()};
 
     eTransform               wlTransformToHyprutils(wl_output_transform t);
     wl_output_transform      invertTransform(wl_output_transform tr);

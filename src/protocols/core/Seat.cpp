@@ -10,7 +10,7 @@
 
 #include <fcntl.h>
 
-constexpr const float WL_FIXED_EPSILON = 1.F / 256.F;
+constexpr float WL_FIXED_EPSILON = 1.F / 256.F;
 
 CWLTouchResource::CWLTouchResource(SP<CWlTouch> resource_, SP<CWLSeatResource> owner_) : m_owner(owner_), m_resource(resource_) {
     if UNLIKELY (!good())

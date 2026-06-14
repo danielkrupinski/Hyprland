@@ -194,7 +194,7 @@ void CCursorManager::setCursorFromName(const std::string& name) {
 
         if (m_currentCursorShapeData.images.empty()) {
             // fallback to a default if available
-            constexpr const std::array<const char*, 3> fallbackShapes = {"default", "left_ptr", "left-ptr"};
+            constexpr std::array<const char*, 3> fallbackShapes = {"default", "left_ptr", "left-ptr"};
 
             for (auto const& s : fallbackShapes) {
                 m_currentCursorShapeData = m_hyprcursor->getShape(s, m_currentStyleInfo);

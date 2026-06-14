@@ -2154,7 +2154,7 @@ static bool successWrite(int fd, const std::string& data, bool needLog = true) {
     size_t                 totalWritten = 0;
     size_t                 remaining    = data.length();
     size_t                 waitsDone    = 0;
-    constexpr const size_t MAX_WAITS    = 20; // 2000µs = 2ms
+    constexpr size_t MAX_WAITS    = 20; // 2000µs = 2ms
 
     while (totalWritten < data.length()) {
         ssize_t written = write(fd, data.c_str() + totalWritten, remaining);
