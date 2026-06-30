@@ -27,16 +27,16 @@ static inline auto iconBackendFromLayout(PangoLayout* layout) {
     return ICONS_BACKEND_NONE;
 }
 
-static constexpr auto    ANIM_DURATION_MS   = 600.F;
-static constexpr auto    ANIM_LAG_MS        = 100.F;
-static constexpr auto    NOTIF_LEFTBAR_SIZE = 5.F;
-static constexpr auto    NOTIF_PAD_X        = 20.F;
-static constexpr auto    NOTIF_PAD_Y        = 10.F;
-static constexpr auto    NOTIF_OFFSET_Y     = 10.F;
-static constexpr auto    NOTIF_GAP_Y        = 10.F;
-static constexpr auto    NOTIF_DAMAGE_PAD_X = 20.F;
-static constexpr auto    ICON_PAD           = 3.F;
-static constexpr auto    ICON_SCALE         = 0.9F;
+constexpr auto           ANIM_DURATION_MS   = 600.F;
+constexpr auto           ANIM_LAG_MS        = 100.F;
+constexpr auto           NOTIF_LEFTBAR_SIZE = 5.F;
+constexpr auto           NOTIF_PAD_X        = 20.F;
+constexpr auto           NOTIF_PAD_Y        = 10.F;
+constexpr auto           NOTIF_OFFSET_Y     = 10.F;
+constexpr auto           NOTIF_GAP_Y        = 10.F;
+constexpr auto           NOTIF_DAMAGE_PAD_X = 20.F;
+constexpr auto           ICON_PAD           = 3.F;
+constexpr auto           ICON_SCALE         = 0.9F;
 
 static inline CHyprColor resolvedColor(const eIcons icon, const CHyprColor& color) {
     return color == CHyprColor(0) ? ICONS_COLORS[icon] : color;

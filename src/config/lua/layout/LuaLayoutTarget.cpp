@@ -13,7 +13,7 @@
 using namespace Config::Lua;
 using namespace Config::Lua::Layouts;
 
-static constexpr const char* TARGET_MT = "HL.LayoutTarget";
+constexpr const char* TARGET_MT = "HL.LayoutTarget";
 
 namespace {
     struct SLuaLayoutTargetRef {

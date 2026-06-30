@@ -2,8 +2,8 @@
 
 using namespace Config::Lua::Bindings;
 
-static constexpr const char* DISPATCHER_MT = "HL.Dispatcher";
-static char                  DISPATCHER_TABLES_REGISTRY_KEY;
+constexpr const char* DISPATCHER_MT = "HL.Dispatcher";
+static char           DISPATCHER_TABLES_REGISTRY_KEY;
 
 namespace {
     struct SDispatcherRef {

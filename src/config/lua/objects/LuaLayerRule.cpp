@@ -6,7 +6,7 @@
 
 using namespace Config::Lua;
 
-static constexpr const char* MT = "HL.LayerRule";
+constexpr const char* MT = "HL.LayerRule";
 
 //
 static int layerRuleEq(lua_State* L) {

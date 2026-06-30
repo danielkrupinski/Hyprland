@@ -13,7 +13,7 @@
 
 using namespace Hyprutils::OS;
 
-static constexpr auto TIMER_TIMEOUT = std::chrono::milliseconds(1500);
+constexpr auto TIMER_TIMEOUT = std::chrono::milliseconds(1500);
 
 CANRManager::CANRManager() {
     if (!NFsUtils::executableExistsInPath("hyprland-dialog")) {

@@ -6,7 +6,7 @@
 
 using namespace Config::Lua;
 
-static constexpr const char* MT = "HL.WindowRule";
+constexpr const char* MT = "HL.WindowRule";
 
 //
 static int windowRuleEq(lua_State* L) {

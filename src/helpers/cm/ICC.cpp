@@ -45,7 +45,7 @@ static constexpr cmsTagSignature makeSig(char a, char b, char c, char d) {
     return sc<cmsTagSignature>(sc<uint32_t>(a) << 24 | sc<uint32_t>(b) << 16 | sc<uint32_t>(c) << 8 | sc<uint32_t>(d));
 }
 
-static constexpr cmsTagSignature VCGT_SIG = makeSig('v', 'c', 'g', 't');
+constexpr cmsTagSignature VCGT_SIG = makeSig('v', 'c', 'g', 't');
 
 //
 

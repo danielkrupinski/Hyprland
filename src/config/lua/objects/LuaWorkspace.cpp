@@ -18,7 +18,7 @@
 
 using namespace Config::Lua;
 
-static constexpr const char* MT = "HL.Workspace";
+constexpr const char* MT = "HL.Workspace";
 
 //
 static int workspaceEq(lua_State* L) {

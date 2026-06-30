@@ -5,7 +5,7 @@
 
 using namespace Config::Lua;
 
-static constexpr const char* MT = "HL.Keybind";
+constexpr const char* MT = "HL.Keybind";
 
 namespace {
     std::optional<SP<SKeybind>> getKeybindFromUserdata(lua_State* L) {

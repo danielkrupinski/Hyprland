@@ -7,9 +7,9 @@
 #include <xkbcommon/xkbcommon-keysyms.h>
 #include <format>
 
-static constexpr uint32_t RELEVANT_MODS = HL_MODIFIER_SHIFT | HL_MODIFIER_CTRL | HL_MODIFIER_ALT | HL_MODIFIER_META;
+constexpr uint32_t RELEVANT_MODS = HL_MODIFIER_SHIFT | HL_MODIFIER_CTRL | HL_MODIFIER_ALT | HL_MODIFIER_META;
 
-static uint32_t           protoModsToHL(uint32_t mods) {
+static uint32_t    protoModsToHL(uint32_t mods) {
     uint32_t out = 0;
     if (mods & VICINAE_HOTKEY_MANAGER_V1_MODIFIERS_SHIFT)
         out |= HL_MODIFIER_SHIFT;

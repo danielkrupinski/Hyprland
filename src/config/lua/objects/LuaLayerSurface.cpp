@@ -9,7 +9,7 @@
 
 using namespace Config::Lua;
 
-static constexpr const char* MT = "HL.LayerSurface";
+constexpr const char* MT = "HL.LayerSurface";
 
 //
 static int layerSurfaceEq(lua_State* L) {

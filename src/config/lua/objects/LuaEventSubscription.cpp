@@ -5,7 +5,7 @@
 
 using namespace Config::Lua;
 
-static constexpr const char* MT = "HL.EventSubscription";
+constexpr const char* MT = "HL.EventSubscription";
 
 namespace {
     struct SEventSubscriptionRef {

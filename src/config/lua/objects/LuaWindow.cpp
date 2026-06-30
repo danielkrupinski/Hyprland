@@ -22,7 +22,7 @@
 
 using namespace Config::Lua;
 
-static constexpr const char* MT = "HL.Window";
+constexpr const char* MT = "HL.Window";
 
 //
 static int getFocusHistoryID(PHLWINDOW wnd) {

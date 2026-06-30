@@ -8,9 +8,9 @@
 
 using namespace Config::Lua;
 
-static constexpr const char* MT = "HL.Group";
+constexpr const char* MT = "HL.Group";
 
-static int                   groupEq(lua_State* L) {
+static int            groupEq(lua_State* L) {
     const auto* lhs = sc<WP<Desktop::View::CGroup>*>(luaL_checkudata(L, 1, MT));
     const auto* rhs = sc<WP<Desktop::View::CGroup>*>(luaL_checkudata(L, 2, MT));
 

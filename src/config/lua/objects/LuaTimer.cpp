@@ -5,7 +5,7 @@
 
 using namespace Config::Lua;
 
-static constexpr const char* MT = "HL.Timer";
+constexpr const char* MT = "HL.Timer";
 
 namespace {
     struct STimerRef {

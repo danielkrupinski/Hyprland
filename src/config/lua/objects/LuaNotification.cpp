@@ -13,7 +13,7 @@
 using namespace Config;
 using namespace Config::Lua;
 
-static constexpr const char* MT = "HL.Notification";
+constexpr const char* MT = "HL.Notification";
 
 namespace {
     struct SNotificationRef {

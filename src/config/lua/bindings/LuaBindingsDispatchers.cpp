@@ -19,17 +19,17 @@ using namespace Hyprutils::String;
 
 namespace CA = Config::Actions;
 
-static constexpr auto ERR        = CA::eActionErrorLevel::ERROR;
-static constexpr auto WARN       = CA::eActionErrorLevel::WARNING;
-static constexpr auto INFO       = CA::eActionErrorLevel::INFO;
-static constexpr auto C_UNKNOWN  = CA::eActionErrorCode::UNKNOWN;
-static constexpr auto C_INVARG   = CA::eActionErrorCode::INVALID_ARGUMENT;
-static constexpr auto C_NOTFOUND = CA::eActionErrorCode::NOT_FOUND;
-static constexpr auto C_NOTARGET = CA::eActionErrorCode::NO_TARGET;
-static constexpr auto C_UNAVAIL  = CA::eActionErrorCode::UNAVAILABLE;
-static constexpr auto C_EXECFAIL = CA::eActionErrorCode::EXECUTION_FAILED;
+constexpr auto ERR        = CA::eActionErrorLevel::ERROR;
+constexpr auto WARN       = CA::eActionErrorLevel::WARNING;
+constexpr auto INFO       = CA::eActionErrorLevel::INFO;
+constexpr auto C_UNKNOWN  = CA::eActionErrorCode::UNKNOWN;
+constexpr auto C_INVARG   = CA::eActionErrorCode::INVALID_ARGUMENT;
+constexpr auto C_NOTFOUND = CA::eActionErrorCode::NOT_FOUND;
+constexpr auto C_NOTARGET = CA::eActionErrorCode::NO_TARGET;
+constexpr auto C_UNAVAIL  = CA::eActionErrorCode::UNAVAILABLE;
+constexpr auto C_EXECFAIL = CA::eActionErrorCode::EXECUTION_FAILED;
 
-static int            dsp_moveCursorToCorner(lua_State* L) {
+static int     dsp_moveCursorToCorner(lua_State* L) {
     return Internal::checkResult(L, CA::moveCursorToCorner((int)lua_tonumber(L, lua_upvalueindex(1)), Internal::windowFromUpval(L, 2)));
 }
 

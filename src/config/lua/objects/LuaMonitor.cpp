@@ -12,7 +12,7 @@
 using namespace Config::Lua;
 using namespace Config::Lua::Bindings;
 
-static constexpr const char* MT = "HL.Monitor";
+constexpr const char* MT = "HL.Monitor";
 
 //
 static int monitorEq(lua_State* L) {
