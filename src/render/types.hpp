@@ -11,7 +11,7 @@
 #include <hyprutils/math/Vector2D.hpp>
 
 namespace Render {
-    const std::vector<const char*> ASSET_PATHS = {
+    inline constexpr std::array ASSET_PATHS = {
 #ifdef DATAROOTDIR
         DATAROOTDIR,
 #endif
